@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-photoalbums-dev-140655-deployment",
-					"S3Key": "amplify-builds/S3Triggercc26185b-58346536317258733070-build.zip"
+					"S3Key": "amplify-builds/S3Triggercc26185b-68625a2f4e544c326643-build.zip"
 				}
 			}
 		},
