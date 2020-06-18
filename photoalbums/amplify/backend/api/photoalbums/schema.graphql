@@ -9,13 +9,15 @@ type Album
 type Photo
   @model
   @key(name: "byAlbum", fields: ["albumId"], queryField: "listPhotosByAlbum")
-  @auth(rules: [{ allow: owner }, { allow: private, provider: iam }]) {
+  @auth(rules: [{ allow: owner }, { allow: private, provider: iam }])
+  @searchable {
   id: ID!
   albumId: ID!
   album: Album @connection(fields: ["albumId"])
   bucket: String!
   fullsize: PhotoS3Info!
   thumbnail: PhotoS3Info!
+  labels: [String]
 }
 
 type PhotoS3Info {
@@ -31,6 +33,7 @@ input CreatePhotoInput {
   bucket: String!
   fullsize: PhotoS3InfoInput!
   thumbnail: PhotoS3InfoInput!
+  labels: [String]
 }
 
 input PhotoS3InfoInput {
