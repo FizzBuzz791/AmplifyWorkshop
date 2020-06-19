@@ -13,7 +13,11 @@
             "providerPlugin": "awscloudformation",
             "output": {
                 "authConfig": {
-                    "additionalAuthenticationProviders": [],
+                    "additionalAuthenticationProviders": [
+                        {
+                            "authenticationType": "AWS_IAM"
+                        }
+                    ],
                     "defaultAuthentication": {
                         "authenticationType": "AMAZON_COGNITO_USER_POOLS",
                         "userPoolConfig": {
@@ -45,7 +49,17 @@
         "S3Triggercf46f8fb": {
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
-            "build": true
+            "build": true,
+            "dependsOn": [
+                {
+                    "category": "api",
+                    "resourceName": "photoalbums",
+                    "attributes": [
+                        "GraphQLAPIIdOutput",
+                        "GraphQLAPIEndpointOutput"
+                    ]
+                }
+            ]
         }
     }
 }

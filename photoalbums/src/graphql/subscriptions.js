@@ -6,6 +6,9 @@ export const onCreateAlbum = /* GraphQL */ `
     onCreateAlbum(owner: $owner) {
       id
       name
+      createdAt
+      updatedAt
+      owner
       photos {
         items {
           id
@@ -17,9 +20,6 @@ export const onCreateAlbum = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
     }
   }
 `;
@@ -28,6 +28,9 @@ export const onUpdateAlbum = /* GraphQL */ `
     onUpdateAlbum(owner: $owner) {
       id
       name
+      createdAt
+      updatedAt
+      owner
       photos {
         items {
           id
@@ -39,9 +42,6 @@ export const onUpdateAlbum = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
     }
   }
 `;
@@ -50,6 +50,9 @@ export const onDeleteAlbum = /* GraphQL */ `
     onDeleteAlbum(owner: $owner) {
       id
       name
+      createdAt
+      updatedAt
+      owner
       photos {
         items {
           id
@@ -61,9 +64,6 @@ export const onDeleteAlbum = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
     }
   }
 `;
@@ -72,16 +72,6 @@ export const onCreatePhoto = /* GraphQL */ `
     onCreatePhoto(owner: $owner) {
       id
       albumId
-      album {
-        id
-        name
-        photos {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        owner
-      }
       bucket
       fullsize {
         key
@@ -93,8 +83,14 @@ export const onCreatePhoto = /* GraphQL */ `
         width
         height
       }
-      createdAt
-      updatedAt
+      album {
+        id
+        name
+        owner
+        photos {
+          nextToken
+        }
+      }
       owner
     }
   }
@@ -104,16 +100,6 @@ export const onUpdatePhoto = /* GraphQL */ `
     onUpdatePhoto(owner: $owner) {
       id
       albumId
-      album {
-        id
-        name
-        photos {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        owner
-      }
       bucket
       fullsize {
         key
@@ -127,6 +113,16 @@ export const onUpdatePhoto = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      album {
+        id
+        name
+        createdAt
+        updatedAt
+        owner
+        photos {
+          nextToken
+        }
+      }
       owner
     }
   }
@@ -136,16 +132,6 @@ export const onDeletePhoto = /* GraphQL */ `
     onDeletePhoto(owner: $owner) {
       id
       albumId
-      album {
-        id
-        name
-        photos {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        owner
-      }
       bucket
       fullsize {
         key
@@ -159,6 +145,16 @@ export const onDeletePhoto = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      album {
+        id
+        name
+        createdAt
+        updatedAt
+        owner
+        photos {
+          nextToken
+        }
+      }
       owner
     }
   }
